@@ -117,6 +117,22 @@ namespace WindowsFormsApplication1
             server.Shutdown(SocketShutdown.Both);
             server.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            string mensaje = "4/";
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            byte[] rebut = new byte[80];
+            server.Receive(rebut);
+            mensaje = Encoding.ASCII.GetString(rebut).Split('\0')[0];
+            contLbl.Text = mensaje;
+
+
+
+        }
     }
 
 
